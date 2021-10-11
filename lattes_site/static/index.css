@@ -1,0 +1,20 @@
+* { 
+  border: 0px; 
+  padding: 0px; 
+}
+
+.container-fluid{
+  padding:0;
+}
+
+#Main_Carousel .carousel-item{
+  height:80vh;
+}
+
+.form_image{
+  width: 40vw;
+}
+
+#search_form label{
+  display: none;
+}
