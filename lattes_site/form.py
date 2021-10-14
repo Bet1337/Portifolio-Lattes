@@ -1,16 +1,14 @@
-from typing import AbstractSet
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField,FileRequired
-from wtforms import StringField, TextAreaField, SelectField
-from wtforms.validators import DataRequired, Length
+from wtforms import StringField, SelectField
+from wtforms.validators import DataRequired, Length, Email
 
 
 class Form(FlaskForm): 
-    name = StringField('Name', validators=[DataRequired(),Length(min=4, max=25)])
-    email = StringField('Email', validators=[DataRequired()])
-    formation = SelectField('Formation', choices=['Licenciatura','Bacharel','Mestrado', 'Doutorado'])
-    abstract =  TextAreaField("Abstract", validators=[DataRequired(), Length(max=300)])
+    name = StringField('Name:', validators=[DataRequired(),Length(min=4, max=25)])
+    email = StringField('Email:', validators=[DataRequired(), Email()])
+    course =  StringField("Course:", validators=[DataRequired()])
+    formation = SelectField('Formation:', choices=['Licenciatura','Bacharel','Mestrado', 'Doutorado'])
+    idiom = SelectField('Idioma(Inglês):', choices=['Fluente','Avançado','Intermediário', 'Básico'])    
+    address = StringField('Address(City, Street, Number, District):', validators=[DataRequired()])
 
-class Search(FlaskForm):
-    search = StringField("Search")
     

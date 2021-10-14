@@ -1,8 +1,14 @@
 * { 
   border: 0px; 
-  padding: 0px; 
+  padding: 0px;
 }
 
+nav, footer{
+  background: #003B73;
+}
+
+
+/* HOME CARROUSEL */
 .container-fluid{
   padding:0;
 }
@@ -11,10 +17,35 @@
   height:80vh;
 }
 
+.carousel-caption{
+  background-color: rgba(0,0,0,.7);
+}
+
+/* HOME CARD */
+
+.card{
+  width: 18rem;
+}
+
+/* FORM in REGISTER */
+
 .form_image{
   width: 40vw;
 }
 
-#search_form label{
-  display: none;
+.control-label{
+  margin-top: 0.4rem
+}
+
+/* Form Validation */
+.help-block{
+  color: red;
+}
+
+/* Flash Messages */
+
+.alert{
+  position: absolute;
+  left: 25%;
+  z-index: 10;
 }

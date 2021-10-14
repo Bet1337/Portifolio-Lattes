@@ -1,19 +1,26 @@
 from flask import Flask
-from flask.helpers import url_for 
 from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin
 from os import path
 from flask_bootstrap import Bootstrap
 
+
 db = SQLAlchemy()
+admin = Admin()
 
 def create_app(): 
 
+    # Configs 
     app = Flask(__name__)
     app.config["SECRET_KEY"] =  "secret"
     app.secret_key = "shhhh e secreto"
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-    db.init_app(app)
     Bootstrap(app)
+
+
+    db.init_app(app)
+    admin.init_app(app)
+
 
     #Routes/Views 
     from .routes import views 
@@ -25,6 +32,7 @@ def create_app():
 
     return app
 
+#Create de Database
 def create_db(app):
     if not path.exists('lattes_site/database.db'):
         db.create_all(app=app)

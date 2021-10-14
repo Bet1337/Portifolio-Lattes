@@ -2,10 +2,26 @@
 
 {% block content %}
 
-<div class="container d-flex"> 
-    <img src="{{url_for('static', filename='images/cards/renan_1.jpg')}}" class="rounded-circle" alt="photo">
-    <div class="content">
-        <h1>{{usr.name}}</h1>
+<div class="container d-flex justify-content-between mt-5"> 
+    
+    <img src="{{url_for('static', filename='images/user/user.png')}}" class="rounded-circle border border-dark w-50" alt="photo">
+    
+    <div class="container ms-4">
+        <h1 class="text-center">{{user.name}}</h1>
+
+        <h3>Formação:</h3>
+        <p class=" p-2 ">{{user.course}} - {{user.formation}}</p>
+
+        <h3>Email:</h3>
+        <p class=" p-2 ">{{user.email}}</p>
+
+        <h3>idioma:</h3>
+        <p class=" p-2">Inglês - {{user.idiom}}</p>
+
+        <h3>Endereço:</h3>
+        <p class=" p-2">{{user.address}}</p>
     </div>
+
 </div>
+
 {% endblock %}
