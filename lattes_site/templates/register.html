@@ -3,22 +3,27 @@
 
 {% block content %}
 
+    <!-- Pegar e Mostrar as flash messages-->
     {% with messages = get_flashed_messages() %}  
       {% if messages %}  
-            {% for message in messages %}  
+             
             <div class="alert alert-danger alert-dismissible fade show w-50 text-center mt-5" role="alert">
               <strong>Something goes Wrong. Maybe the User or Email alredy exist</strong>
               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
-            {% endfor %}  
+  
       {% endif %}  
      {% endwith %}
+
 
 <div class="container mt-5 d-flex"> 
     <img src="{{url_for('static', filename='images/form/form_form.svg')}}" class="form_image" alt="form">
     <form class="form form-horizontal w-100 ms-2" method="post" role="form">
-        <h2>Registre-se</h2>
-        {{ form.hidden_tag() }}
+
+        <!-- Adicionando os formulários-->
+
+        <h2>Registre-se</h2> 
+        {{ form.hidden_tag() }} 
         {{ wtf.form_field(form.name)}}
         {{ wtf.form_field(form.email)}}
         {{ wtf.form_field(form.course)}}

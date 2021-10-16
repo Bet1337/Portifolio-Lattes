@@ -12,6 +12,7 @@ views =  Blueprint('views', __name__,)
 @views.route('/', methods=["GET", "POST"])
 def home():
     
+    #Pega as informações no formulário de busca e envia através de uma sessão para as views.user
     if request.method == "POST": 
         user = request.form["search_form"]
         session["user"] =  user 
@@ -21,8 +22,11 @@ def home():
 
 @views.route('/register', methods=['GET', 'POST'])
 def register():
-    forms = Form()
-   
+
+    forms = Form() 
+    
+    #Verifica se está tudo válido nos forms e não ocorrou nenhum erro
+    #após salva as informações no backend e manda um feedback para o usuário(flash message)
     try:
         if forms.validate_on_submit(): 
 
@@ -39,10 +43,15 @@ def register():
 
 @views.route('/user')
 def user():
+
+    #Verifica se há usuário na sessão, pesquisa o usuário no banco de dados e depois retorna as informações
     if "user" in session: 
         user = User.query.filter_by(name=session["user"]).first()
         if user:
             return render_template("user.html", user = user)
         return redirect("/") 
 
-admin.add_view(ModelView(User, db.session));
+
+# Adiciona uma view Admin
+
+admin.add_view(ModelView(User, db.session,))
